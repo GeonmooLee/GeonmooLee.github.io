@@ -12,6 +12,7 @@ import "./index.scss";
 
 import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
 import SocialImpactPage from "./pages/SocialImpactPage";
 import CvPage from "./pages/CvPage";
 
@@ -27,6 +28,7 @@ function AnimatedRoutes() {
       <Routes location={location}>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
         <Route path="/impact" element={<SocialImpactPage />} />
         <Route path="/cv" element={<CvPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

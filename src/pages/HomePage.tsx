@@ -33,17 +33,17 @@ export default function HomePage() {
         <div className="projects-grid">
           {highlights.map((p) => (
             <div className="project" key={p.id}>
-              <a href={p.href} target="_blank" rel="noreferrer">
+              <Link to={`/projects/${p.id}`}>
                 <img
                   src={p.image}
                   className="zoom"
                   alt={p.title}
                   width="100%"
                 />
-              </a>
-              <a href={p.href} target="_blank" rel="noreferrer">
+              </Link>
+              <Link to={`/projects/${p.id}`}>
                 <h2>{p.title}</h2>
-              </a>
+              </Link>
               <p>{p.description}</p>
             </div>
           ))}
