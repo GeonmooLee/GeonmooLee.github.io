@@ -1,15 +1,39 @@
 import React, { useState, useEffect } from "react";
+import { Navigation, Footer } from "./components";
 import {
-  Main,
-  Timeline,
-  Expertise,
-  Project,
-  Contact,
-  Navigation,
-  Footer,
-} from "./components";
+  HashRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import FadeIn from "./components/FadeIn";
 import "./index.scss";
+
+import HomePage from "./pages/HomePage";
+import ProjectsPage from "./pages/ProjectsPage";
+import SocialImpactPage from "./pages/SocialImpactPage";
+import CvPage from "./pages/CvPage";
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
+  return (
+    <FadeIn transitionDuration={500} key={location.pathname}>
+      <Routes location={location}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/impact" element={<SocialImpactPage />} />
+        <Route path="/cv" element={<CvPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </FadeIn>
+  );
+}
 
 function App() {
   const [mode, setMode] = useState<string>("dark");
@@ -22,23 +46,16 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
-
   return (
     <div
       className={`main-container ${mode === "dark" ? "dark-mode" : "light-mode"}`}
     >
-      <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
-      <FadeIn transitionDuration={700}>
-        <Main />
-        <Expertise />
-        <Timeline />
-        <Project />
-        {/* <Contact/> */}
-      </FadeIn>
-      <Footer />
+      {/* HashRouter works reliably on GitHub Pages (deep links won't 404). */}
+      <HashRouter>
+        <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
+        <AnimatedRoutes />
+        <Footer />
+      </HashRouter>
     </div>
   );
 }
