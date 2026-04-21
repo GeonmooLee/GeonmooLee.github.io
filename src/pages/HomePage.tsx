@@ -4,10 +4,12 @@ import Expertise from "../components/Expertise";
 import Main from "../components/Main";
 import { getHighlightedProjects } from "../data/projects";
 import { impactItems } from "../data/impact";
+import { experienceItems } from "../data/experience";
 
 export default function HomePage() {
   const highlights = getHighlightedProjects();
   const impactHighlights = impactItems;
+  const experienceHighlights = experienceItems.slice(0, 3);
 
   return (
     <div>
@@ -31,6 +33,29 @@ export default function HomePage() {
       </div>
 
       {/* <Expertise /> */}
+
+      <div className="projects-container">
+        <div className="items-container-projects">
+          <h1>Experience &amp; Research Highlights</h1>
+        </div>
+        <div className="projects-grid">
+          {experienceHighlights.map((item) => (
+            <div className="project" key={item.id}>
+              <Link to="/experience">
+                <h2 style={{ marginBottom: 6 }}>{item.title}</h2>
+              </Link>
+              <p style={{ opacity: 0.85, marginTop: 0 }}>
+                {item.period} <br /> {item.org}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className="items-container-project" style={{ paddingTop: 20 }}>
+          <p>
+            <Link to="/experience">See all experience & research →</Link>
+          </p>
+        </div>
+      </div>
 
       <div className="projects-container">
         <div className="items-container-projects">

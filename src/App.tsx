@@ -14,6 +14,7 @@ import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import SocialImpactPage from "./pages/SocialImpactPage";
+import ExperiencePage from "./pages/ExperiencePage";
 import CvPage from "./pages/CvPage";
 
 function AnimatedRoutes() {
@@ -27,6 +28,7 @@ function AnimatedRoutes() {
     <FadeIn transitionDuration={500} key={location.pathname}>
       <Routes location={location}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/experience" element={<ExperiencePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
         <Route path="/impact" element={<SocialImpactPage />} />

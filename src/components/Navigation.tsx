@@ -20,6 +20,7 @@ import Toolbar from "@mui/material/Toolbar";
 const drawerWidth = 240;
 const navItems: Array<{ label: string; to: string }> = [
   { label: "Home", to: "/" },
+  { label: "Experience & Research", to: "/experience" },
   { label: "Engineering Projects", to: "/projects" },
   { label: "Social Impact & Leadership", to: "/impact" },
   { label: "CV", to: "/cv" },
