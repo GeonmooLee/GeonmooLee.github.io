@@ -14,15 +14,22 @@ export default function ProjectsPage() {
 
         return (
           <div key={cat.id}>
-            <div className="items-container">
+            <div className="items-container-projects">
               <h2>{cat.label}</h2>
-              {cat.description ? <p style={{ opacity: 0.9 }}>{cat.description}</p> : null}
+              {cat.description ? (
+                <p style={{ opacity: 0.9 }}>{cat.description}</p>
+              ) : null}
             </div>
             <div className="projects-grid">
               {items.map((p) => (
                 <div className="project" key={p.id}>
                   <Link to={`/projects/${p.id}`}>
-                    <img src={p.image} className="zoom" alt={p.title} width="100%" />
+                    <img
+                      src={p.image}
+                      className="zoom"
+                      alt={p.title}
+                      width="100%"
+                    />
                   </Link>
                   <Link to={`/projects/${p.id}`}>
                     <h2>{p.title}</h2>
@@ -37,4 +44,3 @@ export default function ProjectsPage() {
     </div>
   );
 }
-

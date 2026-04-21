@@ -23,12 +23,8 @@ export default function HomePage() {
       <Expertise />
 
       <div className="projects-container">
-        <div className="items-container">
-          <h1>Highlights</h1>
-          <p>
-            Selected projects (dummy data for layout). You can replace these
-            later.
-          </p>
+        <div className="items-container-projects">
+          <h1>Project Highlights</h1>
         </div>
         <div className="projects-grid">
           {highlights.map((p) => (
@@ -48,7 +44,7 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-        <div className="items-container" style={{ paddingTop: 0 }}>
+        <div className="items-container-project" style={{ paddingTop: 20 }}>
           <p>
             <Link to="/projects">See all projects →</Link>
           </p>

@@ -1,4 +1,5 @@
 // Projects 부분에 들어가는 데이터
+// 이 부분을 수정하는게 새로운 Project 페이지를 만드는 것이다.
 
 import mock01 from "../assets/images/mock01.png";
 import mock02 from "../assets/images/mock02.png";
@@ -65,7 +66,11 @@ export const projects: ProjectItem[] = [
     detail: {
       summary:
         "Detail page template (dummy). Replace this with a longer story: problem → approach → outcomes.",
-      bullets: ["What you built", "Key technical decisions", "Impact / results"],
+      bullets: [
+        "What you built",
+        "Key technical decisions",
+        "Impact / results",
+      ],
       media: [],
     },
   },
@@ -77,7 +82,11 @@ export const projects: ProjectItem[] = [
     image: mock09,
     categoryId: "web-software",
     links: { demo: "https://yujisatojr.itch.io/highspeedchase" },
-    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
   },
   {
     id: "astro-raiders",
@@ -87,7 +96,11 @@ export const projects: ProjectItem[] = [
     image: mock08,
     categoryId: "web-software",
     links: { demo: "https://yujisatojr.itch.io/spacecraft" },
-    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
   },
   {
     id: "datum",
@@ -98,7 +111,11 @@ export const projects: ProjectItem[] = [
     categoryId: "web-software",
     highlight: true,
     links: { demo: "https://www.datumlearn.com/" },
-    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
   },
   {
     id: "wemanage",
@@ -108,7 +125,11 @@ export const projects: ProjectItem[] = [
     image: mock06,
     categoryId: "web-software",
     links: { demo: "http://www.wemanage.jp/" },
-    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
   },
   {
     id: "covid-dashboard",
@@ -118,7 +139,11 @@ export const projects: ProjectItem[] = [
     image: mock05,
     categoryId: "web-software",
     links: { demo: "https://www.byuh.edu/covid-19-case-management" },
-    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
   },
   {
     id: "multi-reg-analysis",
@@ -128,7 +153,11 @@ export const projects: ProjectItem[] = [
     image: mock04,
     categoryId: "web-software",
     links: { github: "https://github.com/yujisatojr/multi-reg-analysis" },
-    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
   },
   {
     id: "programs-of-study",
@@ -138,7 +167,11 @@ export const projects: ProjectItem[] = [
     image: mock03,
     categoryId: "web-software",
     links: { demo: "https://holokai.byuh.edu/programs-of-study" },
-    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
   },
   {
     id: "transfer-evaluation-matrix",
@@ -147,8 +180,14 @@ export const projects: ProjectItem[] = [
       "Created an interactive CSV table generator with Java, Handlebars, and LESS to help students identify eligible credits.",
     image: mock02,
     categoryId: "web-software",
-    links: { demo: "https://hookele.byuh.edu/transfer-evaluation-guidelines-and-matrix" },
-    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+    links: {
+      demo: "https://hookele.byuh.edu/transfer-evaluation-guidelines-and-matrix",
+    },
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
   },
   {
     id: "submeowrine",
@@ -159,7 +198,25 @@ export const projects: ProjectItem[] = [
     categoryId: "mechanical-control",
     highlight: true,
     links: { github: "https://github.com/yujisatojr/submeowrine" },
-    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "mpd",
+    title: "Reverse Engineering & Dynamics Analysis of Air Stepper",
+    description:
+      "Analyzed the dynamics of an air stepper motor using a force sensor and a motion capture system. This project was conducted as a part of the course project for the course 'Introduction to Robotics'.",
+    image: mock01,
+    categoryId: "mechanical-control",
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
   },
 ];
 
