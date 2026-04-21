@@ -1,26 +1,28 @@
 import React from "react";
-import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 import "../assets/styles/Timeline.scss";
-import { impactItems } from "../data/impact";
+import { getImpactItemsLatestFirst } from "../data/impact";
 
 export default function SocialImpactPage() {
   return (
     <div>
       <div className="items-container">
         <h1>Social Impact &amp; Leadership</h1>
-        <p>
-          This page is a dedicated space for social contribution, leadership, and public-interest work.
-          (Currently using dummy content for layout.)
+        <p style={{ opacity: 0.9, marginTop: 0, marginBottom: 30 }}>
+          Activities focused on leadership and social contribution.
         </p>
       </div>
 
       <div className="items-container" style={{ paddingTop: 0 }}>
         <VerticalTimeline>
-          {impactItems.map((item) => (
+          {getImpactItemsLatestFirst().map((item) => (
             <VerticalTimelineElement
               key={item.id}
               className="vertical-timeline-element--work"
@@ -46,4 +48,3 @@ export default function SocialImpactPage() {
     </div>
   );
 }
-

@@ -1,5 +1,9 @@
 import React from "react";
-import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+import { Link } from "react-router-dom";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
 import "@fortawesome/free-regular-svg-icons";
@@ -14,8 +18,8 @@ export default function ExperiencePage() {
     <div>
       <div className="items-container">
         <h1>Experience &amp; Research</h1>
-        <p style={{ opacity: 0.9 }}>
-          Research, internships, and lab experiences. (Data-driven template: edit <code>src/data/experience.ts</code>.)
+        <p style={{ opacity: 0.9, marginTop: 0 }}>
+          Research, internships, and lab experiences.
         </p>
       </div>
 
@@ -29,15 +33,16 @@ export default function ExperiencePage() {
               iconStyle={{ background: "#5000ca", color: "rgb(39, 40, 34)" }}
               icon={<FontAwesomeIcon icon={faFlask} />}
             >
-              <h3 className="vertical-timeline-element-title">{item.title}</h3>
+              <h3 className="vertical-timeline-element-title">
+                <Link to={item.detailPath}>{item.title}</Link>
+              </h3>
               <h4 className="vertical-timeline-element-subtitle">
                 {[item.org, item.location].filter(Boolean).join(" • ")}
               </h4>
-              <ul style={{ marginTop: 8 }}>
-                {item.bullets.map((b, idx) => (
-                  <li key={idx}>{b}</li>
-                ))}
-              </ul>
+
+              <p style={{ marginTop: 12 }}>
+                <Link to={item.detailPath}>View details →</Link>
+              </p>
             </VerticalTimelineElement>
           ))}
         </VerticalTimeline>
@@ -45,4 +50,3 @@ export default function ExperiencePage() {
     </div>
   );
 }
-

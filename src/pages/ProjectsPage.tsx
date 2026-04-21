@@ -7,9 +7,15 @@ export default function ProjectsPage() {
   return (
     <div className="projects-container" id="projects">
       <h1>Projects</h1>
+      <p style={{ opacity: 0.9, marginTop: 0, marginBottom: 30 }}>
+        Engineering projects I've worked on.
+      </p>
 
       {projectCategories.map((cat) => {
-        const items = projects.filter((p) => p.categoryId === cat.id);
+        const items = projects
+          .filter((p) => p.categoryId === cat.id)
+          .slice()
+          .sort((a, b) => b.sortKey - a.sortKey);
         if (items.length === 0) return null;
 
         return (
@@ -34,6 +40,7 @@ export default function ProjectsPage() {
                   <Link to={`/projects/${p.id}`}>
                     <h2>{p.title}</h2>
                   </Link>
+                  <p style={{ opacity: 0.8, marginTop: 0 }}>{p.period}</p>
                   <p>{p.description}</p>
                 </div>
               ))}

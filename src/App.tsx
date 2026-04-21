@@ -16,6 +16,10 @@ import ProjectDetailPage from "./pages/ProjectDetailPage";
 import SocialImpactPage from "./pages/SocialImpactPage";
 import ExperiencePage from "./pages/ExperiencePage";
 import CvPage from "./pages/CvPage";
+import MandRoInternshipPage from "./pages/experience/MandRoInternshipPage";
+import HeroLabPage from "./pages/experience/HeroLabPage";
+import PbLabPage from "./pages/experience/PbLabPage";
+import IdimPage from "./pages/experience/IdimPage";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -29,6 +33,13 @@ function AnimatedRoutes() {
       <Routes location={location}>
         <Route path="/" element={<HomePage />} />
         <Route path="/experience" element={<ExperiencePage />} />
+        <Route
+          path="/experience/mand-ro-internship"
+          element={<MandRoInternshipPage />}
+        />
+        <Route path="/experience/hero-lab-ugr" element={<HeroLabPage />} />
+        <Route path="/experience/pb-lab-ugr" element={<PbLabPage />} />
+        <Route path="/experience/idim-ugr" element={<IdimPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
         <Route path="/impact" element={<SocialImpactPage />} />

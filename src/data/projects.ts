@@ -18,6 +18,12 @@ export type ProjectItem = {
   id: string;
   title: string;
   description: string;
+  period: string;
+  /**
+   * Sorting key for "latest first".
+   * Format: YYYYMM (e.g. 202512). For semester-only items, use a reasonable month (e.g. fall -> 202509).
+   */
+  sortKey: number;
   image: string;
   categoryId: ProjectCategoryId;
   highlight?: boolean;
@@ -47,25 +53,35 @@ export type ProjectCategory = {
 
 // Categories are data-driven: add/remove/reorder freely.
 export const projectCategories: ProjectCategory[] = [
-  { id: "mechanical-control", label: "Mechanical / Control" },
-  { id: "web-software", label: "Web / Software" },
+  {
+    id: "eng-hardware",
+    label: "Engineering Project - Hardware",
+    description:
+      "Mechanical design, circuits, embedded systems, and robotics control projects.",
+  },
+  {
+    id: "eng-software",
+    label: "Engineering Project - Software, AI & Web",
+    description:
+      "Full-stack web, AI/ML, and low-level computing projects (architecture, Verilog, data structures).",
+  },
 ];
 
-// Dummy data for layout (based on the template's sample projects).
-// Replace with your real projects later.
 export const projects: ProjectItem[] = [
   {
-    id: "filmate-ai",
-    title: "Filmate AI",
+    id: "notisnu",
+    title: "NotiSNU (SNU Generative AI Competition – Grand Prize)",
     description:
-      "Developed movie finder app with semantic search and sentiment analysis using OpenAI GPT-3.5 Turbo, Qdrant, React, and Flask.",
+      "SNU notice notifier platform (dummy description for layout). Replace with your final description.",
+    period: "2025.12",
+    sortKey: 202512,
     image: mock10,
-    categoryId: "web-software",
+    categoryId: "eng-software",
     highlight: true,
-    links: { demo: "https://www.filmate.club/" },
+    links: {},
     detail: {
       summary:
-        "Detail page template (dummy). Replace this with a longer story: problem → approach → outcomes.",
+        "Detail page template (dummy). Replace with your story: problem → approach → outcomes.",
       bullets: [
         "What you built",
         "Key technical decisions",
@@ -75,148 +91,238 @@ export const projects: ProjectItem[] = [
     },
   },
   {
-    id: "high-speed-chase",
-    title: "High Speed Chase",
+    id: "prompt-eer",
+    title: "PROMPTeer (LikeLion @ SNU)",
     description:
-      "Designed, developed, and launched a 3D multiplayer racing game with C# and Unity. This is available on Itch.io for gamers worldwide to enjoy.",
+      "Prompt engineering education platform built with FastAPI and React (dummy description).",
+    period: "2025.03 – 2025.12",
+    sortKey: 202512,
     image: mock09,
-    categoryId: "web-software",
-    links: { demo: "https://yujisatojr.itch.io/highspeedchase" },
-    detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
-      media: [],
-    },
-  },
-  {
-    id: "astro-raiders",
-    title: "Astro Raiders",
-    description:
-      "Developed and released a 2D shooting game with C# and Unity. This project is hosted on the Itch.io public marketplace.",
-    image: mock08,
-    categoryId: "web-software",
-    links: { demo: "https://yujisatojr.itch.io/spacecraft" },
-    detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
-      media: [],
-    },
-  },
-  {
-    id: "datum",
-    title: "Datum: Integrated Learning Platform",
-    description:
-      "This is an online educational platform that provides high-quality, data science-focused learning resources in the Japanese language. I created the entire platform from scratch using Ruby on Rails.",
-    image: mock07,
-    categoryId: "web-software",
-    highlight: true,
-    links: { demo: "https://www.datumlearn.com/" },
-    detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
-      media: [],
-    },
-  },
-  {
-    id: "wemanage",
-    title: "WeManage: Real Estate Asset Management",
-    description:
-      "This mobile application allows realtors in Japan to securely manage their property information and view future income predictions. This app is built with Ruby on Rails and JavaScript.",
-    image: mock06,
-    categoryId: "web-software",
-    links: { demo: "http://www.wemanage.jp/" },
-    detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
-      media: [],
-    },
-  },
-  {
-    id: "covid-dashboard",
-    title: "COVID-19 Case Management",
-    description:
-      "Built official charts for COVID/vaccination tracking for an educational institution using JavaScript and the Google Sheets API v4.",
-    image: mock05,
-    categoryId: "web-software",
-    links: { demo: "https://www.byuh.edu/covid-19-case-management" },
-    detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
-      media: [],
-    },
-  },
-  {
-    id: "multi-reg-analysis",
-    title: "Multiple Regression Property Analysis",
-    description:
-      "Analyzed the real estate market and predicted property prices by implementing statistical methods such as OLS and multi-regression analysis in Python.",
-    image: mock04,
-    categoryId: "web-software",
-    links: { github: "https://github.com/yujisatojr/multi-reg-analysis" },
-    detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
-      media: [],
-    },
-  },
-  {
-    id: "programs-of-study",
-    title: "Programs of Study",
-    description:
-      "Designed and developed a custom component for a CMS-based platform using Java, Handlebars, and LESS.",
-    image: mock03,
-    categoryId: "web-software",
-    links: { demo: "https://holokai.byuh.edu/programs-of-study" },
-    detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
-      media: [],
-    },
-  },
-  {
-    id: "transfer-evaluation-matrix",
-    title: "Transfer Evaluation Matrix",
-    description:
-      "Created an interactive CSV table generator with Java, Handlebars, and LESS to help students identify eligible credits.",
-    image: mock02,
-    categoryId: "web-software",
-    links: {
-      demo: "https://hookele.byuh.edu/transfer-evaluation-guidelines-and-matrix",
-    },
-    detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
-      media: [],
-    },
-  },
-  {
-    id: "submeowrine",
-    title: "Submeowrine",
-    description:
-      "Developed and released an Android mobile application using Java and Android Studio that runs a 2D shooting game.",
-    image: mock01,
-    categoryId: "mechanical-control",
-    highlight: true,
-    links: { github: "https://github.com/yujisatojr/submeowrine" },
-    detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
-      media: [],
-    },
-  },
-  {
-    id: "mpd",
-    title: "Reverse Engineering & Dynamics Analysis of Air Stepper",
-    description:
-      "Analyzed the dynamics of an air stepper motor using a force sensor and a motion capture system. This project was conducted as a part of the course project for the course 'Introduction to Robotics'.",
-    image: mock01,
-    categoryId: "mechanical-control",
+    categoryId: "eng-software",
     links: {},
     detail: {
       summary: "Detail page template (dummy).",
       bullets: [],
       media: [],
     },
+  },
+  {
+    id: "how-much",
+    title: "How Much? (LikeLion @ SNU)",
+    description:
+      "Second-hand price estimation web service built with FastAPI and React (dummy description).",
+    period: "2025.03 – 2025.12",
+    sortKey: 202512,
+    image: mock08,
+    categoryId: "eng-software",
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "tactile-art-guide",
+    title: "Tactile Art Exhibition Guide Device (SNUSR)",
+    description:
+      "Handheld assistive device combining IMU motion tracking + UWB indoor localization (dummy description).",
+    period: "2025.03 – 2025.06",
+    sortKey: 202506,
+    image: mock07,
+    categoryId: "eng-hardware",
+    highlight: true,
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "reverse-engineering-air-stepper",
+    title: "Reverse Engineering: Pneumatic Air Stepper",
+    description:
+      "Mechanism analysis in Fusion 360 + FEA stress tests + MATLAB Simscape knee torque dynamics (dummy description).",
+    period: "25-2 (Fall 2025)",
+    sortKey: 202509,
+    image: mock06,
+    categoryId: "eng-hardware",
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "analog-biosignal-acquisition",
+    title: "Analog Bio-Signal Acquisition System (EMG/EEG/EOG)",
+    description:
+      "Designed analog front-end circuits (instrumentation amps, band-pass filters) for biosignal measurement (dummy description).",
+    period: "25-2 (Fall 2025)",
+    sortKey: 202509,
+    image: mock05,
+    categoryId: "eng-hardware",
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "riscv-cpu-verilog",
+    title: "RISC-V CPU + Cache (Verilog)",
+    description:
+      "Designed a 5-stage pipelined RISC-V CPU, branch prediction, and cache memory in Verilog (dummy description).",
+    period: "25-1 (Spring 2025)",
+    sortKey: 202503,
+    image: mock04,
+    categoryId: "eng-software",
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "timeseries-analysis-ml",
+    title: "Time-Series Analysis (Machine Learning)",
+    description:
+      "Multivariate time-series regression analysis (dummy description).",
+    period: "25-1 (Spring 2025)",
+    sortKey: 202503,
+    image: mock03,
+    categoryId: "eng-software",
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "fpga-whac-a-mole",
+    title: 'FPGA Mini-Game: "Whac-A-Mole" (Verilog)',
+    description:
+      "Implemented a digital mini-game and system functions using Verilog on an FPGA board (dummy description).",
+    period: "24-2 (Fall 2024)",
+    sortKey: 202409,
+    image: mock02,
+    categoryId: "eng-software",
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "data-structures-cpp",
+    title: "Data Structures from Scratch (C++)",
+    description:
+      "Implemented BST, B-Tree, Red-Black Tree and more from scratch (dummy description).",
+    period: "24-2 (Fall 2024)",
+    sortKey: 202409,
+    image: mock01,
+    categoryId: "eng-software",
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "griptok-injection-molding",
+    title: "Griptok Injection Molding & Mass Production",
+    description:
+      "Designed a two-part injection mold using SolidWorks (DFM) and manufactured 100+ units (dummy description).",
+    period: "23-1 (Spring 2023)",
+    sortKey: 202303,
+    image: mock10,
+    categoryId: "eng-hardware",
+    links: {},
+    detail: {
+      summary: "Detail page template (dummy).",
+      bullets: [],
+      media: [],
+    },
+  },
+  {
+    id: "smart-eraser",
+    title: "Smart Eraser (Mechatronics)",
+    description:
+      "Fusion 360 mechanical design + electromagnet modules + custom power circuit integration (dummy description).",
+    period: "23-1 (Spring 2023)",
+    sortKey: 202303,
+    image: mock09,
+    categoryId: "eng-hardware",
+    links: {},
+    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+  },
+  {
+    id: "analog-noise-meter",
+    title: "Analog Noise Level Meter (Op-Amp + Filters)",
+    description:
+      "Designed purely analog sound measurement system; migrated breadboard prototype to custom PCB (dummy description).",
+    period: "23-1 (Spring 2023)",
+    sortKey: 202303,
+    image: mock08,
+    categoryId: "eng-hardware",
+    links: {},
+    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+  },
+  {
+    id: "puzzloops",
+    title: "PuzzLoops (C++ / OpenGL Game Project)",
+    description:
+      "2D puzzle game built with custom rendering + collision logic (dummy description).",
+    period: "22-2 (Fall 2022)",
+    sortKey: 202209,
+    image: mock07,
+    categoryId: "eng-software",
+    links: {},
+    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+  },
+  {
+    id: "legged-robot-ced",
+    title: "Legged Robot (Creative Engineering Design Contest)",
+    description:
+      "Designed a legged locomotion mechanism and implemented dual-mode control (manual / autonomous) with Arduino + sensors (dummy description).",
+    period: "21-2 (Fall 2021)",
+    sortKey: 202109,
+    image: mock06,
+    categoryId: "eng-hardware",
+    highlight: true,
+    links: {},
+    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+  },
+  {
+    id: "vess-vacancy-detector",
+    title: "Vacancy Detector for Public Transit (VESS)",
+    description:
+      "Arduino-based device to detect available seats for visually impaired commuters (dummy description).",
+    period: "2021",
+    sortKey: 202106,
+    image: mock05,
+    categoryId: "eng-hardware",
+    links: {},
+    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
+  },
+  {
+    id: "vess-medication-assistive-app",
+    title: "Medication Assistive Device & App (VESS)",
+    description:
+      "Flutter + FastAPI + YOLO-based assistance for medication information (dummy description).",
+    period: "2022 – 2023",
+    sortKey: 202312,
+    image: mock04,
+    categoryId: "eng-software",
+    links: {},
+    detail: { summary: "Detail page template (dummy).", bullets: [], media: [] },
   },
 ];
 

@@ -5,6 +5,7 @@ export type ExperienceItem = {
   org: string;
   location?: string;
   bullets: string[];
+  detailPath: string;
 };
 
 // Seeded from your resume's "Experience" section.
@@ -20,6 +21,7 @@ export const experienceItems: ExperienceItem[] = [
       "Assembled/soldered PCBs, BLDC motor modules, and sensors; diagnosed noise/vibration issues and ensured reliable control for robotic prostheses.",
       "Created support tools using Rhino and 3D printing to aid in prosthesis testing and development.",
     ],
+    detailPath: "/experience/mand-ro-internship",
   },
   {
     id: "hero-lab-ugr",
@@ -30,6 +32,7 @@ export const experienceItems: ExperienceItem[] = [
       "Researched single-channel surface EMG (sEMG) systems for low-cost motion classification in prosthetic applications.",
       "Designed electrode placement strategies, implemented preprocessing pipelines, and built acquisition setups.",
     ],
+    detailPath: "/experience/hero-lab-ugr",
   },
   {
     id: "pb-lab-ugr",
@@ -40,6 +43,7 @@ export const experienceItems: ExperienceItem[] = [
       "Conducted single-cell segmentation research to classify microglia activation states based on morphological parameters.",
       "Implemented deep learning–based segmentation with Cellpose (Python) and classical vision algorithms (Matlab).",
     ],
+    detailPath: "/experience/pb-lab-ugr",
   },
   {
     id: "idim-ugr",
@@ -48,8 +52,8 @@ export const experienceItems: ExperienceItem[] = [
     org: "IDIM (SNU ME)",
     bullets: [
       "Built a smart (electricity-generating) door closer with CAD and Arduino.",
-      "Developed a tendon-driven robot using OpenCV and Arduino.",
+      "Using OpenCV and Arduino to develop tendon-driven robot.",
     ],
+    detailPath: "/experience/idim-ugr",
   },
 ];
-

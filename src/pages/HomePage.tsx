@@ -7,8 +7,10 @@ import { impactItems } from "../data/impact";
 import { experienceItems } from "../data/experience";
 
 export default function HomePage() {
-  const highlights = getHighlightedProjects();
-  const impactHighlights = impactItems;
+  const highlights = getHighlightedProjects()
+    .slice()
+    .sort((a, b) => b.sortKey - a.sortKey);
+  const impactHighlights = impactItems.slice(0, 3);
   const experienceHighlights = experienceItems.slice(0, 3);
 
   return (
@@ -73,8 +75,9 @@ export default function HomePage() {
                 />
               </Link>
               <Link to={`/projects/${p.id}`}>
-                <h2>{p.title}</h2>
+                <h2 style={{ marginBottom: 6 }}>{p.title}</h2>
               </Link>
+              <p style={{ opacity: 0.8, marginTop: 0 }}>{p.period}</p>
               <p>{p.description}</p>
             </div>
           ))}
