@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import Expertise from "../components/Expertise";
 import Main from "../components/Main";
 import { getHighlightedProjects } from "../data/projects";
+import { impactItems } from "../data/impact";
 
 export default function HomePage() {
   const highlights = getHighlightedProjects();
+  const impactHighlights = impactItems;
 
   return (
     <div>
@@ -14,17 +16,25 @@ export default function HomePage() {
       <div className="items-container">
         <h1>At a glance</h1>
         <p>
-          Double majoring in Mechanical Engineering and Electrical &amp;
-          Computer Engineering at Seoul National University. I’m interested in
-          robotics for social impact.
+          Undergraduate student double majoring in <b>Mechanical Engineering</b>{" "}
+          and <b>Electrical &amp; Computer Engineering</b> at Seoul National
+          University.
+          <br />
+          My goal is to use robotics to help close the social inequality gap. Up
+          to now, I've focused on creating affordable and accessible robotic
+          prosthetics.
+          <br />
+          In the long run, I hope to use my engineering skills to build
+          technologies that bring positive, real-world changes to underserved
+          communities.
         </p>
       </div>
 
-      <Expertise />
+      {/* <Expertise /> */}
 
       <div className="projects-container">
         <div className="items-container-projects">
-          <h1>Project Highlights</h1>
+          <h1>Featured Projects</h1>
         </div>
         <div className="projects-grid">
           {highlights.map((p) => (
@@ -47,6 +57,28 @@ export default function HomePage() {
         <div className="items-container-project" style={{ paddingTop: 20 }}>
           <p>
             <Link to="/projects">See all projects →</Link>
+          </p>
+        </div>
+      </div>
+
+      <div className="projects-container">
+        <div className="items-container-projects">
+          <h1>Social Impact & Leadership Highlights</h1>
+        </div>
+        <div className="projects-grid">
+          {impactHighlights.map((item) => (
+            <div className="project" key={item.id}>
+              <Link to="/impact">
+                <h2 style={{ marginBottom: 6 }}>{item.title}</h2>
+              </Link>
+              <p style={{ opacity: 0.8, marginTop: 0 }}>{item.period}</p>
+              <p>{item.bullets[0]}</p>
+            </div>
+          ))}
+        </div>
+        <div className="items-container-project" style={{ paddingTop: 20 }}>
+          <p>
+            <Link to="/impact">See all social impact & leadership →</Link>
           </p>
         </div>
       </div>
