@@ -14,6 +14,35 @@
 .projects-container .projects-grid .project {
     text-align: left;
 }
+
+.category-banner {
+    margin: 18px 0 10px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: rgba(0, 230, 118, 0.10);
+    border: 1px solid rgba(0, 230, 118, 0.55);
+}
+
+.category-banner {
+    box-shadow: 0 14px 34px rgba(0, 230, 118, 0.18);
+}
+
+.category-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.light-mode {
+    .category-banner {
+        background: rgba(0, 230, 118, 0.12);
+        border-color: rgba(0, 200, 83, 0.45);
+        box-shadow: 0 14px 34px rgba(0, 200, 83, 0.12);
+    }
+
+    // category-banner variants removed (kept a single unified style)
+}
   
 .project h2:hover {
     text-decoration: underline;

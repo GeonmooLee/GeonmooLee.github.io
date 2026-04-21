@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { projectCategories, projects } from "../data/projects";
+import ProjectThumbnail from "../components/ProjectThumbnail";
 import "../assets/styles/Project.scss";
 
 export default function ProjectsPage() {
@@ -20,18 +21,22 @@ export default function ProjectsPage() {
 
         return (
           <div key={cat.id}>
-            <div className="items-container-projects">
-              <h2>{cat.label}</h2>
-              {cat.description ? (
-                <p style={{ opacity: 0.9 }}>{cat.description}</p>
-              ) : null}
+            <div
+              className="items-container-projects category-banner"
+              style={{ marginBottom: 20 }}
+            >
+              <div className="category-title-row">
+                <h2 style={{ marginBottom: 0 }}>{cat.label}</h2>
+              </div>
+              <p style={{ opacity: 0.9, marginTop: 8 }}>{cat.description}</p>
             </div>
-            <div className="projects-grid">
+            <div className="projects-grid" style={{ marginBottom: 20 }}>
               {items.map((p) => (
                 <div className="project" key={p.id}>
                   <Link to={`/projects/${p.id}`}>
-                    <img
-                      src={p.image}
+                    <ProjectThumbnail
+                      projectId={p.id}
+                      fallbackSrc={p.image}
                       className="zoom"
                       alt={p.title}
                       width="100%"

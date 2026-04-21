@@ -24,3 +24,6 @@ yarn-debug.log*
 yarn-error.log*
 
 *.pdf
+
+# Project media: keep raw/originals out of git
+src/assets/projects/**/raw/

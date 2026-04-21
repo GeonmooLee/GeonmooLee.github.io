@@ -5,6 +5,7 @@ import Main from "../components/Main";
 import { getHighlightedProjects } from "../data/projects";
 import { impactItems } from "../data/impact";
 import { experienceItems } from "../data/experience";
+import ProjectThumbnail from "../components/ProjectThumbnail";
 
 export default function HomePage() {
   const highlights = getHighlightedProjects()
@@ -67,8 +68,9 @@ export default function HomePage() {
           {highlights.map((p) => (
             <div className="project" key={p.id}>
               <Link to={`/projects/${p.id}`}>
-                <img
-                  src={p.image}
+                <ProjectThumbnail
+                  projectId={p.id}
+                  fallbackSrc={p.image}
                   className="zoom"
                   alt={p.title}
                   width="100%"

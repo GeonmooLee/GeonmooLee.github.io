@@ -7,6 +7,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 import "../assets/styles/Project.scss";
 import { getProjectById } from "../data/projects";
+import ProjectThumbnail from "../components/ProjectThumbnail";
 
 export default function ProjectDetailPage() {
   const { projectId } = useParams();
@@ -23,7 +24,7 @@ export default function ProjectDetailPage() {
     );
   }
 
-  const { title, description, image, links, detail } = project;
+  const { id, title, description, image, links, detail } = project;
 
   return (
     <div className="projects-container">
@@ -81,7 +82,13 @@ export default function ProjectDetailPage() {
 
       <div className="projects-grid">
         <div className="project">
-          <img src={image} className="zoom" alt={title} width="100%" />
+          <ProjectThumbnail
+            projectId={id}
+            fallbackSrc={image}
+            className="zoom"
+            alt={title}
+            width="100%"
+          />
         </div>
         <div className="project">
           <h2>Overview</h2>
