@@ -1,15 +1,10 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import DownloadIcon from "@mui/icons-material/Download";
-
-const dummyCvText = `This is a placeholder CV page.
-
-- Put your CV text here (plain text or structured sections).
-- You can keep the site's theme while presenting a clean, readable resume.
-`;
 
 export default function CvPage() {
-  const resumeHref = `${process.env.PUBLIC_URL}/Resume_GeonmooLee_260214.pdf`;
+  // Option A (recommended): Use Google Drive preview URL for a nice embedded viewer.
+  // Example format: https://drive.google.com/file/d/<FILE_ID>/preview
+  // Option B: Serve the PDF from /public and embed it directly.
+  const pdfUrl = process.env.REACT_APP_CV_PDF_URL;
 
   return (
     <div className="items-container">
@@ -22,26 +17,32 @@ export default function CvPage() {
         }}
       >
         <h1 style={{ margin: 0 }}>CV</h1>
-        <Button
-          variant="contained"
-          startIcon={<DownloadIcon />}
-          href={resumeHref}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Download PDF
-        </Button>
       </div>
 
       <p style={{ opacity: 0.9 }}>
-        Note: CRA serves downloadable files reliably from the{" "}
-        <code>public/</code> folder. If the PDF is not downloadable yet, place
-        your resume PDF in <code>public/</code> with this filename.
+        If the embedded PDF doesn’t show up (browser limitation), use{" "}
+        <a href={pdfUrl} target="_blank" rel="noreferrer">
+          open in a new tab
+        </a>
+        .
       </p>
 
-      <pre style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, marginTop: 24 }}>
-        {dummyCvText}
-      </pre>
+      <div
+        style={{
+          width: "100%",
+          height: "min(80vh, 1200px)",
+          borderRadius: 8,
+          overflow: "hidden",
+          border: "1px solid rgba(255,255,255,0.12)",
+        }}
+      >
+        <iframe
+          title="CV PDF Viewer"
+          src={pdfUrl}
+          style={{ width: "100%", height: "100%", border: 0 }}
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 }
