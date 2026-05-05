@@ -1,5 +1,8 @@
 import React from "react";
-import { getProjectImageSrc } from "../utils/projectAssets";
+import {
+  getProjectImageSrc,
+  getProjectMediaFallbackSrc,
+} from "../utils/projectAssets";
 
 type Props = {
   projectId: string;
@@ -9,12 +12,18 @@ type Props = {
 };
 
 export default function ProjectThumbnail(props: Props) {
+  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.onerror = null;
+    event.currentTarget.src = getProjectMediaFallbackSrc(props.alt);
+  };
+
   return (
     <img
       src={getProjectImageSrc(props.projectId, 1)}
       className={props.className}
       alt={props.alt}
       width={props.width}
+      onError={handleImageError}
     />
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { getProjectMediaFallbackSrc } from "../../utils/projectAssets";
 
 type ProjectMetaItem = {
   label: string;
@@ -114,6 +115,15 @@ function getProjectMediaType(image: ProjectDetailImage) {
   return /\.(mp4|webm|mov|m4v)$/i.test(image.src) ? "video" : "image";
 }
 
+function handleProjectImageError(
+  event: React.SyntheticEvent<HTMLImageElement>,
+) {
+  event.currentTarget.onerror = null;
+  event.currentTarget.src = getProjectMediaFallbackSrc(
+    event.currentTarget.alt || "Project media",
+  );
+}
+
 export function ProjectDetailImageStrip({
   images,
   imageOptions,
@@ -187,7 +197,11 @@ export function ProjectDetailImageStrip({
                     aria-label={image.alt}
                   />
                 ) : (
-                  <img src={image.src} alt={image.alt} />
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    onError={handleProjectImageError}
+                  />
                 )}
               </button>
               {image.caption && (
@@ -229,7 +243,11 @@ export function ProjectDetailImageStrip({
                 playsInline
               />
             ) : (
-              <img src={activeMedia.src} alt={activeMedia.alt} />
+              <img
+                src={activeMedia.src}
+                alt={activeMedia.alt}
+                onError={handleProjectImageError}
+              />
             )}
           </div>
         </div>

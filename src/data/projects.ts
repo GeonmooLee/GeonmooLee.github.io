@@ -57,6 +57,26 @@ export const projectCategories: ProjectCategory[] = [
 
 export const projects: ProjectItem[] = [
   {
+    id: "jamkkan",
+    title: "Jamkkan",
+    description:
+      "Android app that turns unconscious smartphone re-checking into visible behavioral data and gentle self-awareness prompts",
+    period: "2026.04.27 - Present / Personal Android Project",
+    sortKey: 202604,
+    categoryId: "eng-software",
+    links: {},
+    detail: {
+      summary:
+        "A personal Android product that helps users notice short, repeated phone-checking loops by visualizing screen-on events and reflecting them back through non-judgmental prompts.",
+      bullets: [
+        "Defined the problem, MVP scope, and feature specification from scratch.",
+        "Implemented local screen-on event logging and daily/weekly behavior visualization in an Android app.",
+        "Preparing for Google Play Store registration while iterating toward a usable product.",
+      ],
+      media: [],
+    },
+  },
+  {
     id: "notisnu",
     title: "NotiSNU",
     description:
@@ -285,7 +305,6 @@ export const projects: ProjectItem[] = [
     period: "Fall 2021 / Creative Engineering Design",
     sortKey: 202109,
     categoryId: "eng-hardware",
-    highlight: true,
     links: {},
     detail: {
       summary: "Detail page template (dummy).",
@@ -321,6 +340,7 @@ export const projects: ProjectItem[] = [
     period: "2022.05 – 2023.06 / VESS 7th",
     sortKey: 202306,
     categoryId: "eng-software",
+    highlight: true,
     links: {},
     detail: {
       summary:
