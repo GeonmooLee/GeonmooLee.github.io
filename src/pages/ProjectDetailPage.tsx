@@ -24,7 +24,7 @@ export default function ProjectDetailPage() {
     );
   }
 
-  const { id, title, description, image, links, detail } = project;
+  const { id, title, description, links, detail } = project;
 
   return (
     <div className="projects-container">
@@ -84,7 +84,6 @@ export default function ProjectDetailPage() {
         <div className="project">
           <ProjectThumbnail
             projectId={id}
-            fallbackSrc={image}
             className="zoom"
             alt={title}
             width="100%"
@@ -123,4 +122,3 @@ export default function ProjectDetailPage() {
     </div>
   );
 }
-

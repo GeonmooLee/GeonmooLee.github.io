@@ -1,4 +1,4 @@
-// project 이미지를 정리하기 편하도록 만든 스크립트
+// Scaffold project media folders under public/projects.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -37,7 +37,6 @@ function extractProjectIdsFromProjectsTs(source) {
 
 const repoRoot = process.cwd();
 const projectsTsPath = path.join(repoRoot, "src", "data", "projects.ts");
-const assetsRoot = path.join(repoRoot, "src", "assets", "projects");
 const publicRoot = path.join(repoRoot, "public", "projects");
 
 const source = readUtf8(projectsTsPath);
@@ -48,40 +47,32 @@ if (projectIds.length === 0) {
   process.exit(1);
 }
 
-ensureDir(assetsRoot);
 ensureDir(publicRoot);
 
 for (const id of projectIds) {
-  const base = path.join(assetsRoot, id);
-  ensureDir(base);
-  ensureDir(path.join(base, "gallery"));
-  ensureDir(path.join(base, "videos"));
-  ensureDir(path.join(base, "raw"));
-
-  ensureFile(path.join(base, ".gitkeep"), "");
-
-  ensureFile(
-    path.join(base, "thumbnail.placeholder.txt"),
-    [
-      `Place your thumbnail here as:`,
-      `- thumbnail.webp (recommended) OR thumbnail.png OR thumbnail.jpg`,
-      ``,
-      `Project id: ${id}`,
-      ``,
-      `Tip: keep thumbnails ~900–1400px wide, under a few hundred KB.`,
-      ``,
-    ].join("\n"),
-  );
-
-  ensureFile(path.join(base, "gallery", ".gitkeep"), "");
-  ensureFile(path.join(base, "videos", ".gitkeep"), "");
-
-  // Also scaffold the preferred runtime-served location under public/
   const pub = path.join(publicRoot, id);
   ensureDir(pub);
   ensureFile(path.join(pub, ".gitkeep"), "");
+  if (!fs.existsSync(path.join(pub, "01.jpg"))) {
+    ensureFile(
+      path.join(pub, "01.placeholder.txt"),
+      [
+        `Add the required thumbnail/detail image as:`,
+        `- 01.jpg`,
+        ``,
+        `Additional detail images should continue as:`,
+        `- 02.jpg`,
+        `- 03.jpg`,
+        ``,
+        `Project id: ${id}`,
+        ``,
+        `Use zero-padded JPEG filenames so cards and detail pages share the same media folder.`,
+        ``,
+      ].join("\n"),
+    );
+  }
 }
 
 console.log(
-  `Scaffolded ${projectIds.length} project folders under: ${assetsRoot}`,
+  `Scaffolded ${projectIds.length} project folders under: ${publicRoot}`,
 );

@@ -1,43 +1,33 @@
-## Project media folder structure
+## Project Media Folder Structure
 
-이 폴더는 **프로젝트별 썸네일/이미지/영상**을 정리하기 위한 루트 디렉터리입니다.
+Project images and videos live under `public/projects/<projectId>/`.
 
-중요: 썸네일은 가장 안정적으로 `public/projects/<projectId>/thumbnail.(webp|png|jpg)`에서 서빙됩니다.
-(`src/assets`는 번들에 포함되는 방식이라, 개발 중 파일 추가/교체가 환경에 따라 반영이 늦거나 꼬일 수 있습니다.)
+Rules:
+- The folder name must match the `id` in `src/data/projects.ts`.
+- `01.jpg` is required and is always used as the project card thumbnail.
+- `02.jpg`, `03.jpg`, ... are optional detail-page images.
+- Use zero-padded numbers so files stay in natural order.
+- Large videos can be linked externally, but small local clips can live here too.
 
-핵심 규칙:
-- **폴더명 = `src/data/projects.ts`의 `id`와 동일**
-- 썸네일 파일명은 가급적 **`thumbnail.webp` 또는 `thumbnail.png` 또는 `thumbnail.jpg`로 통일**
-- 원본(대용량) 파일은 `raw/`에 넣고, 웹용으로 최적화한 파일만 `gallery/` / `videos/`에 둡니다.
-
-권장 구조:
-
-```text
-src/assets/projects/<projectId>/
-  thumbnail.webp        # 카드 썸네일 (필수, 권장)
-  thumbnail.png         # 가능 (도식/회로도/스크린샷에 유리)
-  thumbnail.jpg         # 가능 (사진 위주에 유리)
-  gallery/              # 상세페이지 이미지들
-    01-...webp
-    02-...webp
-  videos/               # 상세페이지 영상(가급적 embed 링크 권장)
-    demo.mp4
-  raw/                  # 원본(대용량) 자료 (gitignore 권장)
-```
-
-### 썸네일(권장 위치)
+Recommended structure:
 
 ```text
 public/projects/<projectId>/
-  thumbnail.webp
-  thumbnail.png
-  thumbnail.jpg
+  01.jpg        # required, thumbnail and first detail image
+  02.jpg        # optional detail image
+  03.jpg        # optional detail image
+  demo.mp4      # optional local video
 ```
 
-### 자동 생성(스캐폴딩)
-프로젝트 `id`를 기준으로 위 폴더 구조를 자동 생성하려면 아래를 실행하세요.
+Code helpers:
+
+```ts
+getProjectImageSrc(projectId, 1); // /projects/<projectId>/01.jpg
+getProjectImageSrc(projectId, 2); // /projects/<projectId>/02.jpg
+```
+
+To scaffold folders for every project id:
 
 ```bash
 npm run scaffold:assets
 ```
-

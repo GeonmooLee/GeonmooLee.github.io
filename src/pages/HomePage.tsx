@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Expertise from "../components/Expertise";
 import Main from "../components/Main";
 import { getHighlightedProjects } from "../data/projects";
 import { impactItems } from "../data/impact";
@@ -35,8 +34,6 @@ export default function HomePage() {
         </p>
       </div>
 
-      {/* <Expertise /> */}
-
       <div className="projects-container">
         <div className="items-container-projects">
           <h1>Experience &amp; Research Highlights</h1>
@@ -70,7 +67,6 @@ export default function HomePage() {
               <Link to={`/projects/${p.id}`}>
                 <ProjectThumbnail
                   projectId={p.id}
-                  fallbackSrc={p.image}
                   className="zoom"
                   alt={p.title}
                   width="100%"

@@ -36,7 +36,6 @@ export default function ProjectsPage() {
                   <Link to={`/projects/${p.id}`}>
                     <ProjectThumbnail
                       projectId={p.id}
-                      fallbackSrc={p.image}
                       className="zoom"
                       alt={p.title}
                       width="100%"
