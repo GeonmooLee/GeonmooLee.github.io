@@ -52,7 +52,7 @@ export default function HomePage() {
         <div className="projects-grid">
           {experienceHighlights.map((item) => (
             <div className="project" key={item.id}>
-              <Link to="/experience">
+              <Link to={item.detailPath}>
                 <h2 style={{ marginBottom: 6 }}>{item.title}</h2>
               </Link>
               <p style={{ opacity: 0.85, marginTop: 0 }}>

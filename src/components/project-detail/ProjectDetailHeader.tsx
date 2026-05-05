@@ -22,6 +22,8 @@ type ProjectDetailHeaderProps = {
   title: string;
   period: string;
   description: string;
+  backTo?: string;
+  backLabel?: string;
   imageSrc?: string;
   imageAlt?: string;
   imageOptions?: ProjectHeroImageOptions;
@@ -32,6 +34,8 @@ export function ProjectDetailHeader({
   title,
   period,
   description,
+  backTo = "/projects",
+  backLabel = "Back to Projects",
   imageSrc,
   imageAlt,
   imageOptions,
@@ -53,10 +57,10 @@ export function ProjectDetailHeader({
           variant="text"
           startIcon={<ArrowBackIcon />}
           component={Link}
-          to="/projects"
+          to={backTo}
           sx={{ paddingLeft: 0 }}
         >
-          Back to Projects
+          {backLabel}
         </Button>
       </div>
 
