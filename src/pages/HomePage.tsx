@@ -20,9 +20,15 @@ export default function HomePage() {
       <div className="items-container">
         <h1>At a glance</h1>
         <p>
-          Undergraduate student double majoring in <b>Mechanical Engineering</b>{" "}
-          and <b>Electrical &amp; Computer Engineering</b> at Seoul National
-          University.
+          Undergraduate student double majoring in{" "}
+          <strong className="text-emphasis" style={{ color: "#f0ce44" }}>
+            Mechanical Engineering
+          </strong>{" "}
+          and{" "}
+          <strong className="text-emphasis" style={{ color: "#f4b97b" }}>
+            Electrical &amp; Computer Engineering
+          </strong>{" "}
+          at Seoul National University.
           <br />
           My goal is to use robotics to help close the social inequality gap. Up
           to now, I've focused on creating affordable and accessible robotic
@@ -36,7 +42,12 @@ export default function HomePage() {
 
       <div className="projects-container">
         <div className="items-container-projects">
-          <h1>Experience &amp; Research Highlights</h1>
+          <h1>
+            <strong className="text-emphasis" style={{ color: "#7be2f4" }}>
+              Experience &amp; Research
+            </strong>{" "}
+            Highlights
+          </h1>
         </div>
         <div className="projects-grid">
           {experienceHighlights.map((item) => (
@@ -59,7 +70,11 @@ export default function HomePage() {
 
       <div className="projects-container">
         <div className="items-container-projects">
-          <h1>Featured Projects</h1>
+          <h1>
+            <strong className="text-emphasis" style={{ color: "#d87bf4" }}>
+              Featured Projects
+            </strong>
+          </h1>
         </div>
         <div className="projects-grid">
           {highlights.map((p) => (
@@ -89,7 +104,12 @@ export default function HomePage() {
 
       <div className="projects-container">
         <div className="items-container-projects">
-          <h1>Social Impact & Leadership Highlights</h1>
+          <h1>
+            <strong className="text-emphasis" style={{ color: "#7bf47b" }}>
+              Social Impact & Leadership
+            </strong>{" "}
+            Highlights
+          </h1>
         </div>
         <div className="projects-grid">
           {impactHighlights.map((item) => (

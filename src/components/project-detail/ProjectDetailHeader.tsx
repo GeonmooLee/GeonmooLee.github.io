@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -21,8 +21,8 @@ type ProjectDetailHeaderProps = {
   title: string;
   period: string;
   description: string;
-  imageSrc: string;
-  imageAlt: string;
+  imageSrc?: string;
+  imageAlt?: string;
   imageOptions?: ProjectHeroImageOptions;
   meta?: ProjectMetaItem[];
 };
@@ -75,10 +75,127 @@ export function ProjectDetailHeader({
           </div>
         )}
       </div>
-      <figure className="project-detail-hero-image" style={imageStyle}>
-        <img src={imageSrc} alt={imageAlt} />
-      </figure>
+      {imageSrc && (
+        <figure className="project-detail-hero-image" style={imageStyle}>
+          <img src={imageSrc} alt={imageAlt || title} />
+        </figure>
+      )}
     </header>
+  );
+}
+
+type ProjectDetailImage = {
+  src: string;
+  alt: string;
+  imageOptions?: ProjectImageStripOptions;
+};
+
+type ProjectImageStripOptions = {
+  maxWidth?: string;
+  height?: string;
+  tabletHeight?: string;
+  mobileHeight?: string;
+  minItemWidth?: string;
+  objectFit?: React.CSSProperties["objectFit"];
+  objectPosition?: React.CSSProperties["objectPosition"];
+};
+
+type ProjectDetailImageStripProps = {
+  images: ProjectDetailImage[];
+  imageOptions?: ProjectImageStripOptions;
+};
+
+export function ProjectDetailImageStrip({
+  images,
+  imageOptions,
+}: ProjectDetailImageStripProps) {
+  const [activeImage, setActiveImage] = useState<ProjectDetailImage | null>(
+    null,
+  );
+
+  useEffect(() => {
+    if (!activeImage) return undefined;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveImage(null);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeImage]);
+
+  const getImageStripStyle = (options?: ProjectImageStripOptions) =>
+    ({
+      "--project-detail-strip-max-width": options?.maxWidth,
+      "--project-detail-strip-height": options?.height,
+      "--project-detail-strip-tablet-height": options?.tabletHeight,
+      "--project-detail-strip-mobile-height": options?.mobileHeight,
+      "--project-detail-strip-min-width": options?.minItemWidth,
+      "--project-detail-strip-fit": options?.objectFit,
+      "--project-detail-strip-position": options?.objectPosition,
+    }) as React.CSSProperties;
+
+  const imageStripStyle = {
+    ...getImageStripStyle(imageOptions),
+    gridTemplateColumns: `repeat(${Math.max(images.length, 1)}, minmax(0, 1fr))`,
+  } as React.CSSProperties;
+
+  return (
+    <>
+      <div
+        className="project-detail-image-strip"
+        style={imageStripStyle}
+      >
+        {images.map((image) => (
+          <figure
+            className="project-detail-image-strip-item"
+            key={image.src}
+            style={getImageStripStyle(image.imageOptions)}
+          >
+            <button
+              className="project-detail-image-strip-button"
+              type="button"
+              onClick={() => setActiveImage(image)}
+              aria-label={`Open larger view: ${image.alt}`}
+            >
+              <img src={image.src} alt={image.alt} />
+            </button>
+          </figure>
+        ))}
+      </div>
+
+      {activeImage && (
+        <div
+          className="project-detail-image-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeImage.alt}
+          onClick={() => setActiveImage(null)}
+        >
+          <button
+            className="project-detail-image-modal-close"
+            type="button"
+            onClick={() => setActiveImage(null)}
+            aria-label="Close image preview"
+          >
+            x
+          </button>
+          <div
+            className="project-detail-image-modal-content"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img src={activeImage.src} alt={activeImage.alt} />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

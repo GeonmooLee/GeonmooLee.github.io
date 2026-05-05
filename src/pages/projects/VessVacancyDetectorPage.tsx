@@ -3,6 +3,7 @@ import React from "react";
 import "../../assets/styles/Project.scss";
 import {
   ProjectDetailHeader,
+  ProjectDetailImageStrip,
   ProjectDetailSection,
 } from "../../components/project-detail/ProjectDetailHeader";
 import { getProjectById } from "../../data/projects";
@@ -22,16 +23,8 @@ export default function VessVacancyDetectorPage() {
           project?.description ||
           "A portable Arduino-based assistive device prototype designed to help visually impaired commuters identify vacant seats on public transit more independently."
         }
-        imageSrc={getProjectImageSrc(projectId, 1)}
-        imageAlt="Arduino-based vacancy detector prototype"
-        imageOptions={{
-          maxWidth: "490px",
-          height: "auto",
-          objectFit: "contain",
-          objectPosition: "center",
-        }}
         meta={[
-          { label: "Organization", value: "student club VESS" },
+          { label: "Organization", value: "student club VESS 6th" },
           {
             label: "Role",
             value: "Idea proposal, interview design, Arduino prototyping",
@@ -41,6 +34,26 @@ export default function VessVacancyDetectorPage() {
             value: "Assistive technology, hardware prototyping",
           },
         ]}
+      />
+
+      <ProjectDetailImageStrip
+        images={[
+          {
+            src: getProjectImageSrc(projectId, 1),
+            alt: "Arduino-based vacancy detector prototype",
+            imageOptions: {
+              objectFit: "contain",
+              objectPosition: "center",
+            },
+          },
+        ]}
+        imageOptions={{
+          maxWidth: "490px",
+          height: "auto",
+          minItemWidth: "490px",
+          objectFit: "contain",
+          objectPosition: "center",
+        }}
       />
 
       <ProjectDetailSection title="User Problem">
@@ -62,8 +75,9 @@ export default function VessVacancyDetectorPage() {
       <ProjectDetailSection title="Idea & Solution">
         <ul>
           <li>
-            Proposed a portable vacancy detector that does not rely on camera
-            apps or seat-mounted infrastructure.
+            Proposed a{" "}
+            <strong className="text-emphasis">portable vacancy detector</strong>{" "}
+            that does not rely on camera apps or seat-mounted infrastructure.
           </li>
           <li>
             When the user points the device toward a seat and presses a button,

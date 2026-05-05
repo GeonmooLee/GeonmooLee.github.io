@@ -8,13 +8,23 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import "../assets/styles/Project.scss";
 import { getProjectById } from "../data/projects";
 import ProjectThumbnail from "../components/ProjectThumbnail";
+import TactileArtGuidePage from "./projects/TactileArtGuidePage";
 import VessVacancyDetectorPage from "./projects/VessVacancyDetectorPage";
+import VessMedicationAssistiveAppPage from "./projects/VessMedicationAssistiveAppPage";
 
 export default function ProjectDetailPage() {
   const { projectId } = useParams();
 
   if (projectId === "vess-vacancy-detector") {
     return <VessVacancyDetectorPage />;
+  }
+
+  if (projectId === "vess-medication-assistive-app") {
+    return <VessMedicationAssistiveAppPage />;
+  }
+
+  if (projectId === "tactile-art-guide") {
+    return <TactileArtGuidePage />;
   }
 
   const project = projectId ? getProjectById(projectId) : undefined;
