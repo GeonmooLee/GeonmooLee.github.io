@@ -60,19 +60,19 @@ export const projects: ProjectItem[] = [
     id: "notisnu",
     title: "NotiSNU",
     description:
-      "SNU notice notifier platform. SNU Generative AI Competition – Grand Prize",
-    period: "2025.12 / 1st SNU Generative AI Competition",
+      "AI-native web service that turns scattered SNU notices into a personalized information discovery experience",
+    period: "2025.09 - 2025.12 / 1st SNU Generative AI Utilization Competition",
     sortKey: 202512,
     categoryId: "eng-software",
     highlight: true,
     links: {},
     detail: {
       summary:
-        "Detail page template (dummy). Replace with your story: problem → approach → outcomes.",
+        "A full-stack AI web service that integrates scattered SNU notices into one feed, recommends personalized opportunities, and answers questions through a RAG chatbot.",
       bullets: [
-        "What you built",
-        "Key technical decisions",
-        "Impact / results",
+        "Built a unified notice feed, personalized recommendation logic, and RAG-based chatbot experience.",
+        "Connected React, FastAPI, MongoDB, and Qdrant into a working AI-native web product.",
+        "Won the Grand Prize (1st place) at the SNU Generative AI Utilization Competition.",
       ],
       media: [],
     },
@@ -109,7 +109,7 @@ export const projects: ProjectItem[] = [
   },
   {
     id: "tactile-art-guide",
-    title: "Tactile Exhibition Guide Device",
+    title: "Tactile Exhibition Guide Device for Visually Impaired",
     description:
       "Wearable indoor positioning device for visually impaired exhibition visitors, combining UWB localization, orientation sensing, and app-based navigation cues",
     period: "2025.03 - 2025.06 / SNUSR",

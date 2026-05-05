@@ -8,6 +8,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import "../assets/styles/Project.scss";
 import { getProjectById } from "../data/projects";
 import ProjectThumbnail from "../components/ProjectThumbnail";
+import NotiSnuPage from "./projects/NotiSnuPage";
 import TactileArtGuidePage from "./projects/TactileArtGuidePage";
 import VessVacancyDetectorPage from "./projects/VessVacancyDetectorPage";
 import VessMedicationAssistiveAppPage from "./projects/VessMedicationAssistiveAppPage";
@@ -17,6 +18,10 @@ export default function ProjectDetailPage() {
 
   if (projectId === "vess-vacancy-detector") {
     return <VessVacancyDetectorPage />;
+  }
+
+  if (projectId === "notisnu") {
+    return <NotiSnuPage />;
   }
 
   if (projectId === "vess-medication-assistive-app") {

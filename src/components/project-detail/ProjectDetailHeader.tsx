@@ -87,6 +87,9 @@ export function ProjectDetailHeader({
 type ProjectDetailImage = {
   src: string;
   alt: string;
+  caption?: string;
+  type?: "image" | "video";
+  poster?: string;
   imageOptions?: ProjectImageStripOptions;
 };
 
@@ -105,20 +108,26 @@ type ProjectDetailImageStripProps = {
   imageOptions?: ProjectImageStripOptions;
 };
 
+function getProjectMediaType(image: ProjectDetailImage) {
+  if (image.type) return image.type;
+
+  return /\.(mp4|webm|mov|m4v)$/i.test(image.src) ? "video" : "image";
+}
+
 export function ProjectDetailImageStrip({
   images,
   imageOptions,
 }: ProjectDetailImageStripProps) {
-  const [activeImage, setActiveImage] = useState<ProjectDetailImage | null>(
+  const [activeMedia, setActiveMedia] = useState<ProjectDetailImage | null>(
     null,
   );
 
   useEffect(() => {
-    if (!activeImage) return undefined;
+    if (!activeMedia) return undefined;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setActiveImage(null);
+        setActiveMedia(null);
       }
     };
 
@@ -129,7 +138,7 @@ export function ProjectDetailImageStrip({
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeImage]);
+  }, [activeMedia]);
 
   const getImageStripStyle = (options?: ProjectImageStripOptions) =>
     ({
@@ -153,37 +162,57 @@ export function ProjectDetailImageStrip({
         className="project-detail-image-strip"
         style={imageStripStyle}
       >
-        {images.map((image) => (
-          <figure
-            className="project-detail-image-strip-item"
-            key={image.src}
-            style={getImageStripStyle(image.imageOptions)}
-          >
-            <button
-              className="project-detail-image-strip-button"
-              type="button"
-              onClick={() => setActiveImage(image)}
-              aria-label={`Open larger view: ${image.alt}`}
+        {images.map((image) => {
+          const mediaType = getProjectMediaType(image);
+
+          return (
+            <figure
+              className="project-detail-image-strip-item"
+              key={image.src}
+              style={getImageStripStyle(image.imageOptions)}
             >
-              <img src={image.src} alt={image.alt} />
-            </button>
-          </figure>
-        ))}
+              <button
+                className="project-detail-image-strip-button"
+                type="button"
+                onClick={() => setActiveMedia(image)}
+                aria-label={`Open larger view: ${image.alt}`}
+              >
+                {mediaType === "video" ? (
+                  <video
+                    src={image.src}
+                    poster={image.poster}
+                    muted
+                    playsInline
+                    preload="metadata"
+                    aria-label={image.alt}
+                  />
+                ) : (
+                  <img src={image.src} alt={image.alt} />
+                )}
+              </button>
+              {image.caption && (
+                <figcaption className="project-detail-image-caption">
+                  {image.caption}
+                </figcaption>
+              )}
+            </figure>
+          );
+        })}
       </div>
 
-      {activeImage && (
+      {activeMedia && (
         <div
           className="project-detail-image-modal"
           role="dialog"
           aria-modal="true"
-          aria-label={activeImage.alt}
-          onClick={() => setActiveImage(null)}
+          aria-label={activeMedia.alt}
+          onClick={() => setActiveMedia(null)}
         >
           <button
             className="project-detail-image-modal-close"
             type="button"
-            onClick={() => setActiveImage(null)}
-            aria-label="Close image preview"
+            onClick={() => setActiveMedia(null)}
+            aria-label="Close media preview"
           >
             x
           </button>
@@ -191,7 +220,17 @@ export function ProjectDetailImageStrip({
             className="project-detail-image-modal-content"
             onClick={(event) => event.stopPropagation()}
           >
-            <img src={activeImage.src} alt={activeImage.alt} />
+            {getProjectMediaType(activeMedia) === "video" ? (
+              <video
+                src={activeMedia.src}
+                poster={activeMedia.poster}
+                controls
+                autoPlay
+                playsInline
+              />
+            ) : (
+              <img src={activeMedia.src} alt={activeMedia.alt} />
+            )}
           </div>
         </div>
       )}
