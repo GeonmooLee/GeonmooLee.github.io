@@ -8,9 +8,15 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import "../assets/styles/Project.scss";
 import { getProjectById } from "../data/projects";
 import ProjectThumbnail from "../components/ProjectThumbnail";
+import VessVacancyDetectorPage from "./projects/VessVacancyDetectorPage";
 
 export default function ProjectDetailPage() {
   const { projectId } = useParams();
+
+  if (projectId === "vess-vacancy-detector") {
+    return <VessVacancyDetectorPage />;
+  }
+
   const project = projectId ? getProjectById(projectId) : undefined;
 
   if (!project) {

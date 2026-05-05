@@ -290,16 +290,21 @@ export const projects: ProjectItem[] = [
   },
   {
     id: "vess-vacancy-detector",
-    title: "Vacancy Detector for Public Transit",
+    title: "Vacancy Detector for Visually Impaired",
     description:
-      "Arduino-based device to detect available seats for visually impaired commuters.",
-    period: "2021 / VESS",
+      "A portable Arduino-based assistive device that helps visually impaired commuters identify vacant seats on public transit",
+    period: "2021.06 – 2022.01 / VESS",
     sortKey: 202106,
     categoryId: "eng-hardware",
     links: {},
     detail: {
-      summary: "Detail page template (dummy).",
-      bullets: [],
+      summary:
+        "Starting from the user problem that visually impaired commuters have difficulty identifying vacant seats on public transit, I built a portable vacancy detector prototype using an infrared temperature sensor and vibration feedback.",
+      bullets: [
+        "Validated the difficulty of identifying vacant subway seats through interviews with the Seoul Association of the Visually Impaired.",
+        "Designed the device to detect temperature changes when pointed at a seat and communicate occupancy through vibration.",
+        "Completed the prototype, case, and demo video, earning an Encouragement Award at the 13th Creative Design Competition.",
+      ],
       media: [],
     },
   },
