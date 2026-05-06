@@ -6,19 +6,24 @@ import LaunchIcon from "@mui/icons-material/Launch";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 import "../assets/styles/Project.scss";
-import { getProjectById } from "../data/projects";
+import { getProjectById, hasReadyProjectDetail } from "../data/projects";
 import ProjectThumbnail from "../components/ProjectThumbnail";
 import JamkkanPage from "./projects/JamkkanPage";
 import NotiSnuPage from "./projects/NotiSnuPage";
 import TactileArtGuidePage from "./projects/TactileArtGuidePage";
 import VessVacancyDetectorPage from "./projects/VessVacancyDetectorPage";
 import VessMedicationAssistiveAppPage from "./projects/VessMedicationAssistiveAppPage";
+import YonderDynamicsPage from "./projects/YonderDynamicsPage";
 
 export default function ProjectDetailPage() {
   const { projectId } = useParams();
 
   if (projectId === "jamkkan") {
     return <JamkkanPage />;
+  }
+
+  if (projectId === "yonder-dynamics") {
+    return <YonderDynamicsPage />;
   }
 
   if (projectId === "vess-vacancy-detector") {
@@ -43,6 +48,18 @@ export default function ProjectDetailPage() {
     return (
       <div className="items-container">
         <h1>Project not found</h1>
+        <p>
+          <Link to="/projects">Back to Projects</Link>
+        </p>
+      </div>
+    );
+  }
+
+  if (!hasReadyProjectDetail(project.id)) {
+    return (
+      <div className="items-container">
+        <h1>Coming soon</h1>
+        <p>This project detail page is still in progress.</p>
         <p>
           <Link to="/projects">Back to Projects</Link>
         </p>

@@ -20,6 +20,10 @@ import MandRoInternshipPage from "./pages/experience/MandRoInternshipPage";
 import HeroLabPage from "./pages/experience/HeroLabPage";
 import PbLabPage from "./pages/experience/PbLabPage";
 import IdimPage from "./pages/experience/IdimPage";
+import ForestOfTalentPage from "./pages/social/ForestOfTalentPage";
+import PeruVolunteerPage from "./pages/social/PeruVolunteerPage";
+import TokyoForumPage from "./pages/social/TokyoForumPage";
+import YkspHondurasPage from "./pages/social/YkspHondurasPage";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -43,6 +47,13 @@ function AnimatedRoutes() {
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
         <Route path="/impact" element={<SocialImpactPage />} />
+        <Route path="/impact/yksp-honduras" element={<YkspHondurasPage />} />
+        <Route path="/impact/tokyo-forum" element={<TokyoForumPage />} />
+        <Route path="/impact/peru-volunteer" element={<PeruVolunteerPage />} />
+        <Route
+          path="/impact/forest-of-talent"
+          element={<ForestOfTalentPage />}
+        />
         <Route path="/cv" element={<CvPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

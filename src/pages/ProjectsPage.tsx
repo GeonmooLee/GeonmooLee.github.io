@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { projectCategories, projects } from "../data/projects";
-import ProjectThumbnail from "../components/ProjectThumbnail";
+import ProjectCard from "../components/ProjectCard";
 import "../assets/styles/Project.scss";
 
 export default function ProjectsPage() {
@@ -32,21 +31,7 @@ export default function ProjectsPage() {
             </div>
             <div className="projects-grid" style={{ marginBottom: 20 }}>
               {items.map((p) => (
-                <div className="project" key={p.id}>
-                  <Link to={`/projects/${p.id}`}>
-                    <ProjectThumbnail
-                      projectId={p.id}
-                      className="zoom"
-                      alt={p.title}
-                      width="100%"
-                    />
-                  </Link>
-                  <Link to={`/projects/${p.id}`}>
-                    <h2>{p.title}</h2>
-                  </Link>
-                  <p style={{ opacity: 0.8, marginTop: 0 }}>{p.period}</p>
-                  <p>{p.description}</p>
-                </div>
+                <ProjectCard project={p} key={p.id} />
               ))}
             </div>
           </div>

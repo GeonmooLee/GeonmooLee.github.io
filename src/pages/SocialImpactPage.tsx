@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -30,7 +31,13 @@ export default function SocialImpactPage() {
               iconStyle={{ background: "#5000ca", color: "rgb(39, 40, 34)" }}
               icon={<FontAwesomeIcon icon={faPeopleGroup} />}
             >
-              <h3 className="vertical-timeline-element-title">{item.title}</h3>
+              <h3 className="vertical-timeline-element-title">
+                {item.detailPath ? (
+                  <Link to={item.detailPath}>{item.title}</Link>
+                ) : (
+                  item.title
+                )}
+              </h3>
               {(item.org || item.location) && (
                 <h4 className="vertical-timeline-element-subtitle">
                   {[item.org, item.location].filter(Boolean).join(" • ")}
@@ -41,6 +48,11 @@ export default function SocialImpactPage() {
                   <li key={idx}>{b}</li>
                 ))}
               </ul>
+              {item.detailPath && (
+                <p style={{ marginTop: 12 }}>
+                  <Link to={item.detailPath}>View photos →</Link>
+                </p>
+              )}
             </VerticalTimelineElement>
           ))}
         </VerticalTimeline>

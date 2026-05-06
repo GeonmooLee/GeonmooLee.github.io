@@ -4,7 +4,7 @@ import Main from "../components/Main";
 import { getHighlightedProjects } from "../data/projects";
 import { impactItems } from "../data/impact";
 import { experienceItems } from "../data/experience";
-import ProjectThumbnail from "../components/ProjectThumbnail";
+import ProjectCard from "../components/ProjectCard";
 
 export default function HomePage() {
   const highlights = getHighlightedProjects()
@@ -78,21 +78,11 @@ export default function HomePage() {
         </div>
         <div className="projects-grid">
           {highlights.map((p) => (
-            <div className="project" key={p.id}>
-              <Link to={`/projects/${p.id}`}>
-                <ProjectThumbnail
-                  projectId={p.id}
-                  className="zoom"
-                  alt={p.title}
-                  width="100%"
-                />
-              </Link>
-              <Link to={`/projects/${p.id}`}>
-                <h2 style={{ marginBottom: 6 }}>{p.title}</h2>
-              </Link>
-              <p style={{ opacity: 0.8, marginTop: 0 }}>{p.period}</p>
-              <p>{p.description}</p>
-            </div>
+            <ProjectCard
+              project={p}
+              key={p.id}
+              titleStyle={{ marginBottom: 6 }}
+            />
           ))}
         </div>
         <div className="items-container-project" style={{ paddingTop: 20 }}>

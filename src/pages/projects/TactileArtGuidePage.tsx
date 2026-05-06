@@ -21,7 +21,7 @@ export default function TactileArtGuidePage() {
           project?.title ||
           "Tactile Exhibition Guide Device for Visually Impaired Visitors"
         }
-        period={project?.period || "2025.03 - 2025.06 / SNUSR"}
+        period={project?.period || "2025.03 - 2025.06 / SNU SCSR"}
         description={
           project?.description ||
           "A wearable indoor positioning guide device that estimates a visitor's location and orientation in an exhibition space and sends navigation cues to a mobile app."
@@ -29,7 +29,7 @@ export default function TactileArtGuidePage() {
         meta={[
           {
             label: "Organization",
-            value: "SNU Student Social Responsibility Team(SNUSR)",
+            value: "SNU Student Council for Social Responsibility(SNU SCSR)",
           },
           {
             label: "Role",

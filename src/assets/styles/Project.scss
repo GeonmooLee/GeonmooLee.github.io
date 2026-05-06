@@ -52,10 +52,54 @@
     border-color 0.15s ease-in-out;
 }
 
+.project-detail-trigger {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.project-detail-trigger h2 {
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+}
+
+.project-detail-trigger-media {
+  line-height: 0;
+}
+
+.project-detail-trigger-title {
+  line-height: normal;
+}
+
+.project-coming-soon-dialog {
+  width: min(360px, calc(100vw - 40px));
+}
+
+.project-coming-soon-dialog h2,
+.project-coming-soon-dialog p,
+.project-coming-soon-dialog button {
+  color: #0d1116;
+}
+
 .zoom {
   border-radius: 5px;
   transition: transform 0.2s;
   margin: 0 auto;
+}
+
+.projects-container .projects-grid .project img.zoom {
+  display: block;
+  width: 100%;
+  height: clamp(190px, 18vw, 260px);
+  object-fit: cover;
+  object-position: center;
 }
 
 .zoom:hover {
@@ -389,14 +433,56 @@
   margin-bottom: 0;
 }
 
+.project-detail-card-section {
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.project-detail-card-section-heading {
+  margin-bottom: 22px;
+}
+
+.project-detail-card-section-heading h2 {
+  margin: 0;
+  font-size: 1.85rem;
+  line-height: 1.25;
+}
+
+.project-detail-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.project-detail-mini-card {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-detail-mini-card h3 {
+  margin: 0 0 12px;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.project-detail-mini-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
 .light-mode {
   .project-detail-hero-image,
-  .project-detail-image-strip-item {
+  .project-detail-image-strip-item,
+  .project-detail-mini-card {
     border-color: rgba(13, 17, 22, 0.12);
     background: rgba(13, 17, 22, 0.04);
   }
 
   .project-detail-title-block,
+  .project-detail-card-section,
   .project-detail-section {
     border-bottom-color: rgba(13, 17, 22, 0.12);
   }
@@ -436,8 +522,13 @@
   }
 
   .project-detail-meta-item strong,
+  .project-detail-mini-card h3,
   .project-detail-section-body li {
     color: #0d1116;
+  }
+
+  .project-detail-mini-card p {
+    color: rgba(13, 17, 22, 0.74);
   }
 }
 
@@ -465,6 +556,10 @@
     .project-detail-meta-grid {
       grid-template-columns: 1fr;
     }
+
+    .project-detail-card-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 700px) {
@@ -480,6 +575,10 @@
 
     .projects-container .projects-grid .project {
       padding-bottom: 5%;
+    }
+
+    .projects-container .projects-grid .project img.zoom {
+      height: min(62vw, 260px);
     }
 
     .project-detail-page {

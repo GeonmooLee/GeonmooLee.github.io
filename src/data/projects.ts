@@ -57,6 +57,27 @@ export const projectCategories: ProjectCategory[] = [
 
 export const projects: ProjectItem[] = [
   {
+    id: "yonder-dynamics",
+    title: "Mars Rover Drill Implementation",
+    description:
+      "Designed and iterated a Mars Rover drilling and sample-cache mechanism for Yonder Dynamics @ UCSD",
+    period: "2026.01 - 2026.05 / Yonder Dynamics @ UCSD",
+    sortKey: 202601,
+    categoryId: "eng-hardware",
+    highlight: true,
+    links: {},
+    detail: {
+      summary:
+        "A hands-on mechanical design project for Yonder Dynamics, focused on a Mars Rover drilling and sample-cache mechanism that was modeled in OnShape and refined through 3D printing, testing, and redesign.",
+      bullets: [
+        "Designed a drilling and sample-cache mechanism from scratch in OnShape.",
+        "Explored a purely mechanical closed-cache system to satisfy URC-style requirements.",
+        "Repeated 3D printing, assembly, testing, and redesign until the mechanism worked physically.",
+      ],
+      media: [],
+    },
+  },
+  {
     id: "jamkkan",
     title: "Jamkkan",
     description:
@@ -64,6 +85,7 @@ export const projects: ProjectItem[] = [
     period: "2026.04.27 - Present / Personal Android Project",
     sortKey: 202604,
     categoryId: "eng-software",
+    highlight: true,
     links: {},
     detail: {
       summary:
@@ -357,6 +379,21 @@ export const projects: ProjectItem[] = [
 
 export function getHighlightedProjects() {
   return projects.filter((p) => p.highlight);
+}
+
+export const readyProjectDetailIds = [
+  "yonder-dynamics",
+  "jamkkan",
+  "notisnu",
+  "tactile-art-guide",
+  "vess-vacancy-detector",
+  "vess-medication-assistive-app",
+] as const;
+
+export function hasReadyProjectDetail(projectId: string) {
+  return readyProjectDetailIds.includes(
+    projectId as (typeof readyProjectDetailIds)[number],
+  );
 }
 
 export function getProjectById(projectId: string) {
