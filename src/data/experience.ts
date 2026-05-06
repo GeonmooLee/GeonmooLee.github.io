@@ -17,9 +17,9 @@ export const experienceItems: ExperienceItem[] = [
     title: "Research Internship",
     org: "Mand.ro (Prosthetic Startup)",
     bullets: [
-      "Improved embedded algorithms for IMU-based motion tracking and RF communication latency; applied MCU settings such as sleep mode.",
-      "Assembled/soldered PCBs, BLDC motor modules, and sensors; diagnosed noise/vibration issues and ensured reliable control for robotic prostheses.",
-      "Created support tools using Rhino and 3D printing to aid in prosthesis testing and development.",
+      "Improved the IMU-based control pipeline for Mand.ro's Mark 7D prosthetic hand, including RF latency compensation and grasp decision logic.",
+      "Logged and analyzed MPU6050 sensor data with Python/CSV workflows while tuning thresholds, gyro ranges, and control periods.",
+      "Supported hardware fabrication through BLDC motor assembly, Hall sensor soldering, PCB work, battery-pack tasks, and Rhino-based test-jig redesign.",
     ],
     detailPath: "/experience/mand-ro-internship",
   },
@@ -40,8 +40,8 @@ export const experienceItems: ExperienceItem[] = [
     title: "Undergraduate Researcher",
     org: "PB Lab (SNU ME)",
     bullets: [
-      "Conducted single-cell segmentation research to classify microglia activation states based on morphological parameters.",
-      "Implemented deep learning-based segmentation with Cellpose (Python) and classical vision algorithms (Matlab).",
+      "Explored single-cell segmentation and morphology quantification for microglia activation-state analysis.",
+      "Connected Cellpose-generated masks with a MATLAB morphology-analysis pipeline for downstream parameter extraction.",
     ],
     detailPath: "/experience/pb-lab-ugr",
   },

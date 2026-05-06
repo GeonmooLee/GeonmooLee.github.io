@@ -7,7 +7,9 @@ import {
 } from "../../components/project-detail/ProjectDetailHeader";
 
 const publicUrl = (process.env.PUBLIC_URL || "").replace(/\/$/, "");
-const posterUrl = `${publicUrl}/experience/hero-lab-semg-poster.pdf`;
+const posterUrl =
+  process.env.REACT_APP_HERO_LAB_RESEARCH_URL ||
+  `${publicUrl}/experience/hero-lab-semg-poster.pdf`;
 
 export default function HeroLabPage() {
   return (
@@ -43,6 +45,14 @@ export default function HeroLabPage() {
           </a>
         </div>
         <div className="project-detail-pdf-preview">
+          <a
+            className="project-detail-pdf-preview-open-overlay"
+            href={posterUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open research poster preview in a new tab"
+            title="Open research poster preview in a new tab"
+          />
           <iframe
             title="HERO Lab sEMG research poster PDF preview"
             src={posterUrl}
