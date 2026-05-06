@@ -104,7 +104,7 @@ export default function HomePage() {
         <div className="projects-grid">
           {impactHighlights.map((item) => (
             <div className="project" key={item.id}>
-              <Link to="/impact">
+              <Link to={item.detailPath || "/impact"}>
                 <h2 style={{ marginBottom: 6 }}>{item.title}</h2>
               </Link>
               <p style={{ opacity: 0.8, marginTop: 0 }}>{item.period}</p>

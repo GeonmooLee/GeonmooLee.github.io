@@ -21,6 +21,7 @@ import HeroLabPage from "./pages/experience/HeroLabPage";
 import PbLabPage from "./pages/experience/PbLabPage";
 import IdimPage from "./pages/experience/IdimPage";
 import ForestOfTalentPage from "./pages/social/ForestOfTalentPage";
+import KLabDigitalTransformersPage from "./pages/social/KLabDigitalTransformersPage";
 import PeruVolunteerPage from "./pages/social/PeruVolunteerPage";
 import TokyoForumPage from "./pages/social/TokyoForumPage";
 import YkspHondurasPage from "./pages/social/YkspHondurasPage";
@@ -53,6 +54,10 @@ function AnimatedRoutes() {
         <Route
           path="/impact/forest-of-talent"
           element={<ForestOfTalentPage />}
+        />
+        <Route
+          path="/impact/k-lab-digital-transformers"
+          element={<KLabDigitalTransformersPage />}
         />
         <Route path="/cv" element={<CvPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

@@ -74,6 +74,7 @@ export const impactItems: ImpactItem[] = [
       "Provided ICT education (Python, Raspberry Pi) remotely and in-person to students.",
       "Collaborated with Laos students on appropriate technology in the environment domain.",
     ],
+    detailPath: "/impact/k-lab-digital-transformers",
   },
 ];
 
